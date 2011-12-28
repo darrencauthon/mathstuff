@@ -1,26 +1,24 @@
 (function( $ ) {
   $.fn.sum  = function() {  
-    if (this.length == 0) return 0;
-    var value = 0;
+    var return_value = 0;
     this.each(function() {
-      if (isNaN($(this).val()) == false)
-        value = value + parseFloat($(this).val());
+      if (this_is_a_valid_number($(this).val()))
+        return_value += convert_to_a_float($(this).val());
     });
-    return value;
+    return return_value;
   };
 
   $.fn.multiply = function(){
-    if (this.length == 0) return 0;
     var value = 1;
-    value_hit = false;
+    the_set_includes_a_valid_number = false;
     this.each(function(){
-      if (isNaN($(this).val()) == false)
+      if (this_is_a_valid_number($(this).val()))
       {
-        value = value * $(this).val();
-        value_hit = true;
+        value *= convert_to_a_float($(this).val());
+        the_set_includes_a_valid_number = true;
       }
     });
-    return value_hit ? value : 0;
+    return the_set_includes_a_valid_number ? value : 0;
   };
 
   $.formatAsDollars = function(value){
@@ -31,4 +29,12 @@
     return valueAsFloat.toFixed(2);
   };
 
+  function this_is_a_valid_number(value){
+    return isNaN(value) == false;
+  }
+
+  function convert_to_a_float(value){
+    return parseFloat(value);
+  }
+  
 })( jQuery );
