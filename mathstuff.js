@@ -12,9 +12,14 @@
   $.fn.multiply = function(){
     if (this.length == 0) return 0;
     var value = 1;
+    value_hit = false;
     this.each(function(){
-      value = value * $(this).val();
+      if (isNaN($(this).val()) == false)
+      {
+        value = value * parseFloat($(this).val());
+        value_hit = true;
+      }
     });
-    return value;
+    return value_hit ? value : 0;
   };
 })( jQuery );

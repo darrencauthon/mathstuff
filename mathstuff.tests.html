@@ -82,6 +82,12 @@
         var value = $('.two').multiply();
         equal(value, 6, "should return six" );
       });
+     
+      test("returns 0 when given one item that is NaN", function(){
+        $('input[name=one]').val(NaN);
+        var value = $('input[name=one]').multiply();
+        equal(value, 0, "should return zero" );
+      });
   });
   </script>
   
