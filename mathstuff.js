@@ -8,4 +8,13 @@
     });
     return value;
   };
+
+  $.fn.multiply = function(){
+    if (this.length == 0) return 0;
+    var value = 1;
+    this.each(function(){
+      value = value * $(this).val();
+    });
+    return value;
+  };
 })( jQuery );
