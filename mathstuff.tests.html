@@ -5,16 +5,17 @@
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <link rel="stylesheet" href="http://code.jquery.com/qunit/git/qunit.css" type="text/css" media="screen" />
   <script type="text/javascript" src="http://code.jquery.com/qunit/git/qunit.js"></script>
+  <script type="text/javascript" src="mathstuff.js"></script>
 
   <script>
   $(document).ready(function(){
     
-    test("a basic test example", function() {
-      ok( true, "this test is fine" );
-      var value = "hello";
-      equal( value, "hello", "We expect value to be hello" );
+    test("sum returns zero when passed nothing", function() {
+      var value = $('input[name=nothing]').sum();
+      equal( value, 0, "should return zero" );
     });
 
+  });
   </script>
   
 </head>
