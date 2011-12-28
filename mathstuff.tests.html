@@ -88,6 +88,19 @@
         var value = $('input[name=one]').multiply();
         equal(value, 0, "should return zero" );
       });
+
+      test("returns 0 when given one item that is invalid", function(){
+        $('input[name=one]').val("abc");
+        var value = $('input[name=one]').multiply();
+        equal(value, 0, "should return zero" );
+      });
+
+      test("returns 2.2 when given two items that multiply to 2.2", function(){
+        $('#B1').val(2);
+        $('#B2').val(1.1);
+        var value = $('.two').multiply();
+        equal(value, 2.2, "should return 2.2" );
+      });
   });
   </script>
   

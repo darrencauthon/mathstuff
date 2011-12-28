@@ -16,7 +16,7 @@
     this.each(function(){
       if (isNaN($(this).val()) == false)
       {
-        value = value * parseFloat($(this).val());
+        value = value * $(this).val();
         value_hit = true;
       }
     });
