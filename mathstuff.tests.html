@@ -39,6 +39,27 @@
       equal(value, 0, "should return 0");
     });
 
+    test("sum returns 3 when given a two-item selector with total of 3", function() {
+      $('#B1').val(1);
+      $('#B2').val(2);
+      var value = $('.two').sum();
+      equal(value, 3, "should return 3");
+    });
+
+    test("sum returns 3 when given a three-item selector with total of 3 and a bad item", function() {
+      $('#C1').val(1);
+      $('#C2').val(2);
+      $('#C3').val("abc");
+      var value = $('.three').sum();
+      equal(value, 3, "should return 3");
+    });
+
+    test("sum returns 1.3 when given a two-item selector with total of 1.3", function() {
+      $('#B1').val(0.9);
+      $('#B2').val(0.4);
+      var value = $('.two').sum();
+      equal(value, 1.3, "should return 1.3");
+    });
   });
   </script>
   
@@ -52,6 +73,11 @@
   <div id="qunit-fixture">
     <form>
       <input name="one" />
+      <input class="two" id="B1" />
+      <input class="two" id="B2" />
+      <input class="three" id="C1" />
+      <input class="three" id="C2" />
+      <input class="three" id="C3" />
     </form>
   </div>
 </body>
