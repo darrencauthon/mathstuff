@@ -1,5 +1,7 @@
 (function( $ ) {
   $.fn.sum  = function() {  
-    return 0 
+    if (this.length == 0) return 0;
+    var value = this.val();
+    return isNaN(value) ? 0 : value;
   };
 })( jQuery );
