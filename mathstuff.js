@@ -1,9 +1,9 @@
 (function( $ ) {
+
   $.fn.sum  = function() {  
     var return_value = 0;
     this.each(function() {
-      if (this_is_a_valid_number($(this).val()))
-        return_value += convert_to_a_float($(this).val());
+      return_value += convert_to_a_float($(this).val());
     });
     return return_value;
   };
@@ -22,9 +22,7 @@
   };
 
   $.formatAsDollars = function(value){
-    if (isNaN(value)) return "0.00";
-    if (value == 0) return "0.00";
-    var valueAsFloat = parseFloat(value);
+    var valueAsFloat = convert_to_a_float(value);
     valueAsFloat = Math.round(valueAsFloat * 100) / 100;
     return valueAsFloat.toFixed(2);
   };
@@ -34,7 +32,7 @@
   }
 
   function convert_to_a_float(value){
-    return parseFloat(value);
+    return this_is_a_valid_number(value) ? parseFloat(value) : 0;
   }
   
-})( jQuery );
+})(jQuery);
