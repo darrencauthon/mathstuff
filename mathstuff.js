@@ -22,4 +22,13 @@
     });
     return value_hit ? value : 0;
   };
+
+  $.formatAsDollars = function(value){
+    if (isNaN(value)) return "0.00";
+    if (value == 0) return "0.00";
+    var valueAsFloat = parseFloat(value);
+    valueAsFloat = Math.round(valueAsFloat * 100) / 100;
+    return valueAsFloat.toFixed(2);
+  };
+
 })( jQuery );

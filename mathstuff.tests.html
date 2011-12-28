@@ -12,43 +12,43 @@
     
     module("Sum");
 
-      test("sum returns zero when given nothing", function() {
+      test("returns zero when given nothing", function() {
         var value = $('input[name=nothing]').sum();
         equal(value, 0, "should return zero" );
       });
 
-      test("sum returns 1 when given a single-item selector with value of ", function() {
+      test("returns 1 when given a single-item selector with value of ", function() {
         $('input[name=one]').val(1);
         var value = $('input[name=one]').sum();
         equal(value, 1, "should return 1");
       });
 
-      test("sum returns 2 when given a single-item selector with value of 2", function() {
+      test("returns 2 when given a single-item selector with value of 2", function() {
         $('input[name=one]').val(2);
         var value = $('input[name=one]').sum();
         equal(value, 2, "should return 2");
       });
 
-      test("sum returns 0 when given a single-item selector with value of NaN", function() {
+      test("returns 0 when given a single-item selector with value of NaN", function() {
         $('input[name=one]').val(NaN);
         var value = $('input[name=one]').sum();
         equal(value, 0, "should return 0");
       });
 
-      test("sum returns 0 when given a single-item selector with non-numeric value", function() {
+      test("returns 0 when given a single-item selector with non-numeric value", function() {
         $('input[name=one]').val("abc");
         var value = $('input[name=one]').sum();
         equal(value, 0, "should return 0");
       });
 
-      test("sum returns 3 when given a two-item selector with total of 3", function() {
+      test("returns 3 when given a two-item selector with total of 3", function() {
         $('#B1').val(1);
         $('#B2').val(2);
         var value = $('.two').sum();
         equal(value, 3, "should return 3");
       });
 
-      test("sum returns 3 when given a three-item selector with total of 3 and a bad item", function() {
+      test("returns 3 when given a three-item selector with total of 3 and a bad item", function() {
         $('#C1').val(1);
         $('#C2').val(2);
         $('#C3').val("abc");
@@ -56,7 +56,7 @@
         equal(value, 3, "should return 3");
       });
 
-      test("sum returns 1.3 when given a two-item selector with total of 1.3", function() {
+      test("returns 1.3 when given a two-item selector with total of 1.3", function() {
         $('#B1').val(0.9);
         $('#B2').val(0.4);
         var value = $('.two').sum();
@@ -100,6 +100,43 @@
         $('#B2').val(1.1);
         var value = $('.two').multiply();
         equal(value, 2.2, "should return 2.2" );
+      });
+
+    module("FormatAsDollars");
+      
+      test("returns 1.23 when given 1.23", function(){
+        var value = $.formatAsDollars(1.23);
+        equal(value, "1.23", "should return 1.23");
+      });
+
+      test("returns 2.79 when given 2.79", function(){
+        var value = $.formatAsDollars(2.79);
+        equal(value, "2.79", "should return 2.79");
+      });
+
+      test("returns 0.00 when given 0", function(){
+        var value = $.formatAsDollars(0);
+        equal(value, "0.00", "should return 0");
+      });
+
+      test("returns 0.00 when given abc", function(){
+        var value = $.formatAsDollars("abc");
+        equal(value, "0.00", "should return 0");
+      });
+
+      test("returns 0.00 when given NaN", function(){
+        var value = $.formatAsDollars(NaN);
+        equal(value, "0.00", "should return 0");
+      });
+
+      test("returns 0.01 when given 0.011", function(){
+        var value = $.formatAsDollars(0.011);
+        equal(value, "0.01", "should return 0.01");
+      });
+
+      test("returns 0.02 when given 0.015", function() {
+        var value = $.formatAsDollars(0.015);
+        equal(value, "0.02", "should return 0.02");
       });
   });
   </script>
